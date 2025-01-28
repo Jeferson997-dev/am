@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedicatoria - El color de tus ojos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 10px #ff69b4;
+            }
+            50% {
+                box-shadow: 0 0 20px #ff69b4;
+            }
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 1;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+            /* scrollbar-width: none; */
+            -ms-overflow-style: none;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .dedication {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        .photo-container {
+            margin: 15px 0;
+        }
+
+        .photo {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 100%;
+            height: auto;
+            border: 4px solid #ff69b4;
+            transition: transform 0.3s ease;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        .audio-container {
+            margin-top: 15px;
+        }
+
+        iframe {
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            height: 120px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            background-color: #ff69b4;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #fad0c4;
+            color: #ff69b4;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
+            animation: moveUp 4s infinite ease-in-out, glow 2s infinite alternate;
+        }
+
+        .heart:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(3) {
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                padding: 15px;
+                max-width: 90%;
+            }
+
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .dedication {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .dedication {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            iframe {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+
+    <div class="card-container">
+        <h1 class="title">El color de tus ojos</h1>
+        <p class="dedication">
+            El color de tus ojos no solo despertó mi interés, sino que iluminó mi vida
+            como el amanecer más hermoso. Tu mirada es el refugio donde quiero quedarme,
+            y tus sonrisas son la melodía que llena mis días de alegría.
+        </p>
+        <p class="dedication">
+            Eres mi sueño hecho realidad, mi razón para creer en el amor, y mi felicidad
+            más grande. Gracias por ser tú, mi princesita preciosa.
+        </p>
+        <p class="dedication">
+            <strong>Te amo más de lo que las palabras pueden expresar.</strong>
+        </p>
+
+        <div class="photo-container">
+            <img src="am.png" alt="Tu angelito precioso" class="photo">
+        </div>
+
+        <div class="audio-container">
+            <iframe scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/316934805&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
