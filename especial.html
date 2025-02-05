@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi San Valentín?</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('img/fondo.jpg') no-repeat center center/cover;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Contenedor principal */
+    .container {
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* Estilos para el título */
+    .title {
+      color: red;
+      font-family: 'Dancing Script', cursive;
+      font-size: 42px;
+      font-weight: bold;
+    }
+
+    /* Animación de flotación del sobre */
+    @keyframes float-envelope {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Imagen del sobre */
+    .envelope-image {
+      width: 320px;
+      height: auto;
+      transition: transform 0.5s ease;
+      animation: float-envelope 2s ease-in-out infinite;
+    }
+
+    /* Nuevo */
+    .new-message {
+      color: #000000;
+      margin-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 42px;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px rgb(255, 255, 255);
+    }
+
+    .hidden-section {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      /* background: white; */
+      text-align: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 50px auto;
+    }
+
+    .heart-container img {
+      position: absolute;
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 10px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px 1px rgb(209, 31, 73);
+    }
+
+    .mensaje_title {
+      /* text-align: center; */
+      padding-top: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mensaje p {
+      font-size: 24px;
+      text-align: center;
+      color: #b30047
+    }
+
+    /* Fin Nuevo */
+
+
+    /* Carta */
+    .letter {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 50%;
+      height: 60%;
+      background: #fff8f0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      z-index: 20;
+      opacity: 0;
+      border: 3px solid #df778a;
+      background-size: cover;
+    }
+
+    /* Animaciones al hacer clic */
+    .show .envelope-image {
+      transform: translateY(-200px) scale(0);
+    }
+
+    .show .letter {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    /* Botones */
+    .btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .yes-btn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .no-btn {
+      background-color: gray;
+      color: white;
+      /* Se elimina position absolute para mantener la disposición en el contenedor */
+    }
+
+    /* Texto de la carta */
+    .letter p {
+      font-size: 24px;
+      text-align: center;
+      color: #b30047;
+    }
+
+    /* Media Queries para dispositivos móviles */
+    @media (max-width: 768px) {
+      .letter {
+        width: 90%;
+        height: 80%;
+        padding: 10px;
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .letter p {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+
+      .heart-container {
+        width: 50%;
+      }
+
+      .mensaje_title {
+        font-size: 20px;
+      }
+
+      .mensaje p {
+        font-size: 18px;
+      }
+
+      .heart-container img {
+        width: 15%;
+        max-width: 50px;
+        height: 15%;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .letter {
+        width: 90%;
+        height: 80%;
+        padding: 10px;
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .letter p {
+        font-size: 28px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .letter {
+        width: 90%;
+        height: 80%;
+        padding: 10px;
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .letter p {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .heart-container {
+        width: 30%;
+        /* padding: 0px; */
+      }
+
+      .mensaje_title {
+        font-size: 18px;
+      }
+
+      .mensaje p {
+        font-size: 16px;
+      }
+
+      .heart-container img {
+        width: 25%;
+        max-width: 60px;
+        height: 20%;
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Contenedor con el sobre y la carta -->
+  <div class="container" onclick="openLetter()">
+    <!-- Imagen del sobre -->
+    <img src="https://i.postimg.cc/fyjvthCy/Sobre-amor.png" alt="Sobre de amor" class="envelope-image" id="sobre">
+    <div class="new-message" id="newMessage">Tienes una <br>nueva carta</div>
+
+    <!-- Carta -->
+    <div class="letter" id="letter">
+      <h1 class="title">Hola, mi amor ❤️</h1>
+      <p>Mi princesa hermosa, cada día a tu lado es un regalo, contigo en mi vida todos los días son maravillosos, eres
+        el motivo de mis alegrías, eres una personita super especial, preciosísima en todos los sentidos.</p>
+      <p>Hoy, quiero preguntarte algo que nace desde lo más profundo de mi corazón... ¿Me harías el honor de ser mi San
+        Valentín? 💘</p>
+      <div class="btn-container">
+        <button class="yes-btn" onclick="acceptLove(event)">Sí, mi amor 💖</button>
+        <button class="no-btn" onclick="moveNo(event)">No (Imposible 😜)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden-section" id="surprise">
+    <div class="heart-container" id="heartContainer">
+      <h1 class="mensaje_title">¡Te amo muchísimo! ❤️</h1>
+      <p class="mensaje">Eres la persona más maravillosa del mundo.</p>
+    </div>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.querySelector('.container').classList.add('show');
+    }
+    function acceptLove(event) {
+      event.stopPropagation();
+      document.getElementById('letter').style.display = 'none';
+      document.getElementById('sobre').style.display = 'none';
+      document.getElementById('newMessage').style.display = 'none';
+      document.getElementById('surprise').style.display = 'block';
+      placeImagesInHeart();
+    }
+    function moveNo(event) {
+      event.stopPropagation();
+      let btnNo = document.querySelector('.no-btn');
+      let x = Math.random() * 200 - 100;
+      let y = Math.random() * 200 - 100;
+      btnNo.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    const imageUrls = [
+      'img/amor_1.png',
+      'img/amor_2.png',
+      'img/amor_3.png',
+      'img/amor_4.png',
+      'img/amor_5.png',
+      'img/amor_6.jpg',
+      'img/amor_7.jpg',
+      'img/amor_8.jpg',
+      'img/amor_9.jpg',
+      'img/amor_10.jpg',
+      'img/amor_11.jpg',
+      'img/amor_12.jpg',
+      'img/amor_13.png',
+      'img/amor_14.png',
+      'img/amor_15.png',
+      'img/amor_16.jpg',
+      'img/amor_17.png',
+      'img/amor_18.jpg',
+      'img/amor_19.png',
+      'img/amor_20.jpg',
+      'img/amor_21.jpg',
+    ];
+    function placeImagesInHeart() {
+      const heartContainer = document.getElementById('heartContainer');
+      const heartShape = [
+        [0, -10], [40, -35], [-40, -35], [80, -49], [-80, -49], [115, -35], [-115, -35],
+        [118, 0], [-118, 0], [108, 35], [-108, 35], [85, 70], [-85, 70], [58, 105], [-58, 105], [32, 135], [-32, 135], [0, 160]
+
+        /* [0, -180], [30, -40], [-30, -40], [50, -20], [-50, -20],
+        [70, 10], [-70, 10], [80, 50], [-80, 50], [60, 80],
+        [-60, 80], [40, 100], [-40, 100], [20, 120], [-20, 120] */
+      ];
+
+      imageUrls.forEach((url, index) => {
+        if (index < heartShape.length) {
+          let img = document.createElement('img');
+          img.src = url;
+          img.style.left = `${50 + heartShape[index][0]}%`;
+          img.style.top = `${50 + heartShape[index][1]}%`;
+          heartContainer.appendChild(img);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
